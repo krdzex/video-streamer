@@ -1,0 +1,11 @@
+.headerWrapper {
+    border-bottom: 1px solid black;
+}
+
+.streamListWrapper, .streamCreateWrapper {
+    margin-top: 5%;
+}
+
+.form-control {
+    width: 50% !important;
+}
