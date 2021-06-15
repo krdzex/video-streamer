@@ -8,7 +8,6 @@ const GoogleAuth = () => {
     const dispatch = useDispatch();
     const clientId = "666197469288-psaeqi7eu049aol5psct91lo0v53o3gu.apps.googleusercontent.com"
     const success = (response) => {
-        console.log("Success", response.profileObj)
         dispatch(getUser(response.profileObj))
         dispatch(isLogged())
     }
@@ -19,7 +18,6 @@ const GoogleAuth = () => {
     const successLogout = () => {
         dispatch(deleteUser())
         dispatch(logOut())
-        alert("LOGOUT URADIO");
     }
 
     return (

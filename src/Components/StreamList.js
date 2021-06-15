@@ -20,22 +20,23 @@ const StreamList = () => {
 
         <h1>Streams</h1>
         <Grid divided='vertically'>
-            {streams.map((streams, id) => (
-                <Grid.Row key={id}>
+            {streams.map((streams) => (
+                <Grid.Row key={streams.id}>
                     <Grid.Column width={1}>
                         <Image width="5000" src='https://react.semantic-ui.com/images/wireframe/image.png' />
                     </Grid.Column>
                     <Grid.Column width={10}>
-                        {streams.title}<br />
-                        {streams.description}
+                        <p style={{ fontSize: "20px", fontWeight: "bold" }}>{streams.title}</p><br />
+                        <p style={{ fontSize: "15px" }}>{streams.description}</p>
                     </Grid.Column>
                     <Grid.Column width={2} floated="right">
-                        {streams.userId === currentUserId ? <div><Button primary>Edit</Button><Button secondary>Delete</Button></div> : ""}
+                        {streams.userId === currentUserId ? <div><Link to={`/streams/edit/${streams.id}`}><Button primary>Edit</Button></Link><Link to={`/streams/delete/${streams.id}`}><Button negative>Delete</Button></Link></div> : ""}
                     </Grid.Column>
-                </Grid.Row>
-            ))}
-        </Grid>
-        {isLoggedUser ? <Link to={"/streams/new"}><Button primary floated="right">Create Stream</Button></Link> : ""}
+                </Grid.Row >
+            ))
+            }
+        </Grid >
+        {isLoggedUser ? <Link to={"/streams/new"}>< Button primary floated="right" > Create Stream</Button ></Link > : ""}
     </div >
 
     );

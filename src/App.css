@@ -2,10 +2,14 @@
     border-bottom: 1px solid black;
 }
 
-.streamListWrapper, .streamCreateWrapper {
+.streamListWrapper, .streamCreateWrapper, .streamEditWrapper {
     margin-top: 5%;
 }
 
 .form-control {
-    width: 50% !important;
+    width: 40% !important;
+}
+
+.button {
+    margin-top: 10px !important;
 }
