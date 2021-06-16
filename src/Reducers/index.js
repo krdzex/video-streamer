@@ -4,13 +4,16 @@ import getStreamsReducer from "./streams";
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form"
 import creatingStreamErr from "./createStreamError";
+import currentStream from "./currentStream";
 
 const allReducers = combineReducers({
     currentUser: userReducer,
     isLogged: isLoggedReducer,
     allStreams: getStreamsReducer,
     form: formReducer,
-    creatingStreamErr
+    creatingStreamErr,
+    currentStream
+
 })
 
 export default allReducers;

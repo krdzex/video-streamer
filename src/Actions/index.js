@@ -61,3 +61,10 @@ export const streamId = () => {
         type: "INCRASE"
     }
 }
+
+export const currentStream = (currStream) => {
+    return {
+        type: "ADD_CURRENT_STREAM",
+        payload: currStream
+    }
+}

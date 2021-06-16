@@ -20,7 +20,8 @@ const StreamCreate = () => {
 
 
     const submit = async (values) => {
-        if (values.hasOwnProperty('title') && values.hasOwnProperty('description')) {
+        if (values.title !== undefined && values.description !== undefined) {
+            console.log(values)
             const newStream = {
                 title: values.title,
                 description: values.description,
@@ -34,12 +35,12 @@ const StreamCreate = () => {
             dispatch(streamId());
             return history.push("/")
         } else {
-            if (!values.hasOwnProperty('title')) {
+            if (values.title === undefined) {
                 dispatch(titleError())
             } else {
                 dispatch(goodTitle())
             }
-            if (!values.hasOwnProperty('description')) {
+            if (values.description === undefined) {
                 dispatch(descriptionError())
             } else {
                 dispatch(goodDescription())

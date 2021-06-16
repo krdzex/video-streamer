@@ -29,7 +29,6 @@ const StreamDelete = ({ match }) => {
             }
         }
     }, [id, streams])
-    console.log(title)
     return (
         <div>
             <Modal

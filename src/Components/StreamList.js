@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { Button } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { allStreams } from '../Actions';
+import { allStreams, currentStream, goodDescription, goodTitle } from '../Actions';
 import axios from "axios";
 import { Grid, Image } from 'semantic-ui-react'
+
 const StreamList = () => {
     const isLoggedUser = useSelector(state => state.isLogged);
     const currentUserId = useSelector(state => state.currentUser.googleId);
@@ -13,6 +14,9 @@ const StreamList = () => {
 
     useEffect(() => {
         axios.get(apiUrl).then(response => dispatch(allStreams(response.data)));
+        dispatch(currentStream({}))
+        dispatch(goodTitle());
+        dispatch(goodDescription());
     }, [dispatch])
 
     const streams = useSelector(state => state.allStreams)
@@ -21,9 +25,9 @@ const StreamList = () => {
         <h1>Streams</h1>
         <Grid divided='vertically'>
             {streams.map((streams) => (
-                <Grid.Row key={streams.id}>
+                <Grid.Row key={streams.id} className="row">
                     <Grid.Column width={1}>
-                        <Image width="5000" src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                        <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
                     </Grid.Column>
                     <Grid.Column width={10}>
                         <p style={{ fontSize: "20px", fontWeight: "bold" }}>{streams.title}</p><br />

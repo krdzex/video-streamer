@@ -1,6 +1,24 @@
-import React from 'react';
 import Form from './FormComponent';
-const StreamEdit = () => {
+import { useDispatch, useSelector } from 'react-redux';
+
+import React, { useEffect, useState } from 'react';
+import { currentStream } from '../Actions';
+
+
+const StreamEdit = ({ match }) => {
+    const dispatch = useDispatch();
+    // const apiUrl = "http://localhost:3001/streams";
+    const streams = useSelector(state => state.allStreams);
+    const [id] = useState(match.params.id);
+
+    useEffect(() => {
+        for (let i = 0; i < streams.length; i++) {
+            if (parseInt(id) === streams[i].id) {
+                dispatch(currentStream(streams[i]));
+            }
+        }
+    }, [id, streams, dispatch])
+
     const submit = () => {
 
     }
