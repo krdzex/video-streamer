@@ -30,7 +30,7 @@ const StreamList = () => {
                         <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
                     </Grid.Column>
                     <Grid.Column width={10}>
-                        <p style={{ fontSize: "20px", fontWeight: "bold" }}>{streams.title}</p><br />
+                        <p style={{ fontSize: "20px", fontWeight: "bold" }}><Link to={`/streams/${streams.id}`}>{streams.title}</Link></p><br />
                         <p style={{ fontSize: "15px" }}>{streams.description}</p>
                     </Grid.Column>
                     <Grid.Column width={2} floated="right">
@@ -40,7 +40,8 @@ const StreamList = () => {
             ))
             }
         </Grid >
-        {isLoggedUser ? <Link to={"/streams/new"}>< Button primary floated="right" > Create Stream</Button ></Link > : ""}
+        {isLoggedUser ? <Link to={"/streams/new"}>< Button primary floated="right" > Create Stream</Button ></Link > : ""
+        }
     </div >
 
     );

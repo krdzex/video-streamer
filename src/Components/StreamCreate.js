@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './FormComponent';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { titleError, descriptionError, goodTitle, goodDescription, streamId } from '../Actions';
+import { titleError, descriptionError, goodTitle, goodDescription } from '../Actions';
 import { useHistory } from 'react-router';
 
 
@@ -32,7 +32,6 @@ const StreamCreate = () => {
             })
             dispatch(goodDescription());
             dispatch(goodTitle());
-            dispatch(streamId());
             return history.push("/")
         } else {
             if (values.title === undefined) {

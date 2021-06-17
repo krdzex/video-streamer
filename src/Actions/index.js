@@ -56,12 +56,6 @@ export const goodDescription = () => {
 }
 
 
-export const streamId = () => {
-    return {
-        type: "INCRASE"
-    }
-}
-
 export const currentStream = (currStream) => {
     return {
         type: "ADD_CURRENT_STREAM",
