@@ -3,17 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Header, Modal } from 'semantic-ui-react'
 import { useSelector } from 'react-redux';
-
+import { currentStream } from '../Actions';
+import { useDispatch } from 'react-redux';
 const StreamDelete = ({ match }) => {
-
+    const dispatch = useDispatch();
     const apiUrl = "http://localhost:3001/streams";
-    const streams = useSelector(state => state.allStreams);
     const [id] = useState(match.params.id);
     const history = useHistory();
     const cancel = () => {
         return history.push("/");
     }
-    const [title, setTitle] = useState("");
+
 
     const removeStream = async () => {
         await axios.delete(`${apiUrl}/${id}`).then(console.log("uspjesno")).catch(reason => {
@@ -23,12 +23,9 @@ const StreamDelete = ({ match }) => {
     }
 
     useEffect(() => {
-        for (let i = 0; i < streams.length; i++) {
-            if (parseInt(id) === streams[i].id) {
-                setTitle(streams[i].title);
-            }
-        }
-    }, [id, streams])
+        axios.get(`${apiUrl}/${id}`).then(response => dispatch(currentStream(response.data)));
+    }, [id, dispatch])
+    const title = useSelector(state => state.currentStream.title);
     return (
         <div>
             <Modal

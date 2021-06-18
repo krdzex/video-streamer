@@ -1,5 +1,5 @@
 import Form from './FormComponent';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import React, { useEffect, useState } from 'react';
 import { currentStream, descriptionError, goodDescription, goodTitle, titleError } from '../Actions';
@@ -15,24 +15,19 @@ const StreamEdit = ({ match }) => {
     }
     const dispatch = useDispatch();
     const apiUrl = "http://localhost:3001/streams";
-    const streams = useSelector(state => state.allStreams);
     const [id] = useState(match.params.id);
 
+
     useEffect(() => {
-        for (let i = 0; i < streams.length; i++) {
-            if (parseInt(id) === streams[i].id) {
-                dispatch(currentStream(streams[i]));
-            }
-        }
-    }, [id, streams, dispatch])
+        axios.get(`${apiUrl}/${id}`).then(response => dispatch(currentStream(response.data)));
+    }, [id, dispatch])
 
     const submit = async (values) => {
         if (values.title !== "" && values.description !== "") {
             console.log(values)
             const changes = {
-                id: 6,
                 title: values.title,
-                description: values.description,
+                description: values.description
             }
             await axios.patch((`${apiUrl}/${id}`), changes, { header });
             dispatch(goodDescription());
