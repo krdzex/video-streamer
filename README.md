@@ -33,7 +33,7 @@ That is because we still didnt setup our stream in OBS.
 ## How to setup your stream in OBS
 
 Firstly to do this you need have OBS app on your PC.\
-If you dont have it then just download it on this link  [OBS download](https://obsproject.com)
+If you dont have it then just download it on this link  [OBS download](https://obsproject.com)\
 After you run OBS the following things: 
 1. In top left corner click on file button and then settings.
 2. Then click on Stream button on left side and on the right side you should see settings for your Stream.
